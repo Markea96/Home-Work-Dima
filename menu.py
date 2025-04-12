@@ -1,3 +1,5 @@
+from typing import Optional
+
 menu = {
     'Cheese': 200,
     'Nuggets': 500,
@@ -41,3 +43,30 @@ if __name__ == '__main__':
 1) Write function delete_product ( menu , product_name ) that deletes menu item with product name
 2) Write function that solve and print all roots for math equation like: ax**2 + bx + c = 0  
 """
+
+
+def delete_product(_menu: dict[str, int], product_name: str) -> None:
+    if _menu.get(product_name):
+        del _menu[product_name]
+
+
+def solve_square_equation(a: float, b: float, c: float) -> tuple[float | None, float | None]:
+    """
+    Calculate and return all Roots
+    :param a: 
+    :param b: 
+    :param c: 
+    :return: roots as a tuple
+    """
+    import math
+
+    discriminant = b ** 2 - 4 * a * c
+    if discriminant > 0:
+        root1 = (-b + math.sqrt(discriminant)) / (2 * a)
+        root2 = (-b - math.sqrt(discriminant)) / (2 * a)
+        return root1, root2
+    elif discriminant == 0:
+        root = -b / (2 * a)
+        return root, None
+    else:
+        return None, None
